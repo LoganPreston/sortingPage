@@ -12,7 +12,7 @@
 #array {
   background-color: white;
   height: 265px;
-  width: 598px;
+  width: 750px;
   margin: auto;
   position: relative;
   margin-top: 64px;
@@ -20,7 +20,7 @@
 
 .block {
   width: 28px;
-  background-color: #6b5b95;
+  background-color: #28527a;
   position: absolute;
   bottom: 0px;
   transition: 0.2s all ease;
@@ -32,6 +32,8 @@
   position: absolute;
   transition: 0.2s all ease;
 }
+
+/* label for columns */
 .block_id {
   position: absolute;
   color: black;
@@ -39,24 +41,32 @@
   width: 100%;
   text-align: center;
 }
+/* Count indices */
 .block_id2 {
   position: absolute;
   color: black;
   margin-top: 22px;
+  padding-top: 5px;
   width: 100%;
   text-align: center;
 }
-
+/* frequency counts */
 .block_id3 {
   position: absolute;
   color: black;
   margin-top: 1px;
+
   width: 100%;
   text-align: center;
 }
 
 #count {
-  height: 265px;
-  width: 598px;
+  height: 100px;
+  width: 750px;
   margin: auto;
+}
+
+.sortStatus {
+  font-size: 20px;
+  text-align: center;
 }
