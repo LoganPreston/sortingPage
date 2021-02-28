@@ -7,7 +7,33 @@
 
   <body>
     <br />
-    <p class="header">Sort!</p>
+    <div class="titleBlock">
+      <p class="header">Press Generate to Start!</p>
+      <button id="generate" class="prep button" onclick="runGenerateArray()">
+        Generate List
+      </button>
+      <button
+        class="sort button"
+        onclick="runSort(bubbleSort, 'Bubble Sort')"
+        disabled
+      >
+        Bubble Sort
+      </button>
+      <button
+        class="sort button"
+        onclick="runSort(shakerSort, 'Shaker Sort')"
+        disabled
+      >
+        Shaker Sort
+      </button>
+      <button
+        class="sort button"
+        onclick="runSort(heapSort, 'Heap Sort')"
+        disabled
+      >
+        Heap Sort
+      </button>
+    </div>
 
     <div id="array"></div>
     <br />
@@ -16,6 +42,7 @@
 
     <p class="sortStatus"></p>
 
-    <script src="index.js"></script>
+    <script type="" src="sorts.js"></script>
+    <script type="" src="index.js"></script>
   </body>
 </html>
