@@ -126,7 +126,6 @@ function runSort(sort, name) {
   sort(delay, () => {
     let status = document.querySelector(".sortStatus");
     let endTime = new Date().getTime();
-    console.log(endTime);
     status.innerText =
       "Sort Completed after " +
       Math.round((endTime - startTime) / 1000) +
