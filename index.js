@@ -118,7 +118,7 @@ function runSort(sort, name) {
   genButton.disabled = true;
 
   // Calling sort function, reactivate generate button when done
-  let delay = 100;
+  let delay = 150;
   sort(delay, () => {
     let status = document.querySelector(".sortStatus");
     status.innerText = "Sort Complete!";

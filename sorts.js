@@ -276,7 +276,6 @@ async function insertionSort(delay, callback) {
 
   //iterate through numAry (value of each block, orig order)
   for (let i = 1; i < blocks.length; i++) {
-    /*
     let curVal = Number(blocks[i].childNodes[0].innerHTML);
     let j = i - 1;
     let compareVal = Number(blocks[j].childNodes[0].innerHTML);
@@ -307,8 +306,8 @@ async function insertionSort(delay, callback) {
     blocks[j + 1].style.height = `${curVal * 5}px`;
     block_label[j + 1].innerText = curVal;
   }
-  */
-    /* alternative inner for loop.*/
+
+  /* alternative inner for loop.
     //evaluate every entry already in list to see if newly inserted value should preceed it
     for (let j = i; j > 0; j--) {
       let leftVal = Number(blocks[j - 1].childNodes[0].innerHTML);
@@ -336,7 +335,7 @@ async function insertionSort(delay, callback) {
       blocks[j - 1].style.backgroundColor = "#28527a";
       blocks[j].style.backgroundColor = "#28527a";
     }
-  }
+  }*/
   callback();
 }
 
