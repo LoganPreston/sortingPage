@@ -118,11 +118,19 @@ function runSort(sort, name) {
   const genButton = document.getElementById("generate");
   genButton.disabled = true;
 
+  //start timer - get millisec since unix epoch
+  let startTime = new Date().getTime();
+
   // Calling sort function, reactivate generate button when done
   let delay = 200;
   sort(delay, () => {
     let status = document.querySelector(".sortStatus");
-    status.innerText = "Sort Complete!";
+    let endTime = new Date().getTime();
+    console.log(endTime);
+    status.innerText =
+      "Sort Completed after " +
+      Math.round((endTime - startTime) / 1000) +
+      " seconds!";
     document.getElementById("generate").disabled = false;
   });
 }

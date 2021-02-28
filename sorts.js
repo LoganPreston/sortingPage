@@ -297,6 +297,11 @@ async function insertionSort(delay, callback) {
         compareVal = Number(blocks[j].childNodes[0].innerHTML);
       }
     }
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
     blocks[j + 1].style.height = `${curVal * 5}px`;
     block_label[j + 1].innerText = curVal;
   }
@@ -431,7 +436,7 @@ function merge(left, right) {
 
 function quickSortRun(delay, callback) {
   var blocks = document.querySelectorAll(".block");
-  mergeSort(blocks, delay);
+  quickSort(blocks, delay);
 }
 
 async function quickSort(array, delay) {
@@ -447,13 +452,23 @@ async function quickSort(array, delay) {
     var length = array.length;
     for (var i = 0; i < length; i++) {
       arrayVal = Number(array[i].childNodes[0].innerHTML);
+
       //LTE pivot :left, GT pivot : right
       if (arrayVal <= pivotVal) {
         leftArr.push(array[i]);
       } else {
         rightArr.push(array[i]);
       }
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
     }
-    return newArr.concat(quickSort(leftArr), pivot, quickSort(rightArr));
+    return newArr.concat(
+      quickSort(leftArr, delay),
+      pivot,
+      quickSort(rightArr, delay)
+    );
   }
 }
