@@ -1,6 +1,7 @@
 // Function to generate the array of blocks
 function generatearray() {
   var container = document.getElementById("array");
+
   let numRange = 25;
   for (var i = 0; i < numRange; i++) {
     // Return a value from 1 to 100 (both inclusive)
@@ -118,7 +119,7 @@ function runSort(sort, name) {
   genButton.disabled = true;
 
   // Calling sort function, reactivate generate button when done
-  let delay = 150;
+  let delay = 200;
   sort(delay, () => {
     let status = document.querySelector(".sortStatus");
     status.innerText = "Sort Complete!";

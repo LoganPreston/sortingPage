@@ -280,8 +280,7 @@ async function insertionSort(delay, callback) {
     let j = i - 1;
     let compareVal = Number(blocks[j].childNodes[0].innerHTML);
 
-    //blocks[i].style.backgroundColor = "#8ac4d0";
-    blocks[j].style.backgroundColor = "#8ac4d0";
+    blocks[i].style.backgroundColor = "#8ac4d0";
     while (j > -1 && curVal < compareVal) {
       blocks[j].style.backgroundColor = "#8ac4d0";
 
@@ -298,14 +297,10 @@ async function insertionSort(delay, callback) {
         compareVal = Number(blocks[j].childNodes[0].innerHTML);
       }
     }
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, delay)
-    );
     blocks[j + 1].style.height = `${curVal * 5}px`;
     block_label[j + 1].innerText = curVal;
   }
+  blocks[blocks.length - 1].style.backgroundColor = "#28527a";
 
   /* alternative inner for loop.
     //evaluate every entry already in list to see if newly inserted value should preceed it
@@ -339,12 +334,61 @@ async function insertionSort(delay, callback) {
   callback();
 }
 
-function mergeSortRun() {
+async function selectionSort(delay, callback) {
   var blocks = document.querySelectorAll(".block");
-  mergeSort(blocks);
+  var block_label = document.getElementsByClassName("block_id");
+
+  let compareVal, min, minVal;
+  for (let i = 0; i < blocks.length; i++) {
+    //always color the min
+    min = i;
+    minVal = Number(blocks[i].childNodes[0].innerHTML);
+    blocks[min].style.backgroundColor = "#8ac4d0";
+
+    // Finding the smallest number in the subarray
+    for (let j = i + 1; j < blocks.length; j++) {
+      compareVal = Number(blocks[j].childNodes[0].innerHTML);
+      blocks[j].style.backgroundColor = "#8ac4d0";
+      if (compareVal < minVal) {
+        //uncolor old min, then recolor new min. make sure i is colored for swap
+        blocks[min].style.backgroundColor = "#28527a";
+        min = j;
+        minVal = Number(blocks[min].childNodes[0].innerHTML);
+        blocks[min].style.backgroundColor = "#8ac4d0";
+        blocks[i].style.backgroundColor = "#8ac4d0";
+      }
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, delay)
+      );
+      //uncolor j, but keep the min colored for swap
+      blocks[j].style.backgroundColor = "#28527a";
+      blocks[min].style.backgroundColor = "#8ac4d0";
+    }
+    //swap if needed
+    if (min != i) {
+      let tmp = Number(blocks[i].childNodes[0].innerHTML);
+
+      blocks[i].style.height = `${minVal * 5}px`;
+      block_label[i].innerText = minVal;
+
+      blocks[min].style.height = `${tmp * 5}px`;
+      block_label[min].innerText = tmp;
+    }
+    //uncolor for next comparison
+    blocks[i].style.backgroundColor = "#28527a";
+    blocks[min].style.backgroundColor = "#28527a";
+  }
+  callback();
 }
 
-async function mergeSort(array, delay = 150) {
+function mergeSortRun(delay, callback) {
+  var blocks = document.querySelectorAll(".block");
+  mergeSort(blocks, delay);
+}
+
+async function mergeSort(array, delay) {
   const half = array.length / 2;
 
   // Base case or terminating case
@@ -352,8 +396,8 @@ async function mergeSort(array, delay = 150) {
     return array;
   }
 
-  let left = []; //array.splice(0, half);
-  let right = [];
+  var left = []; //array.splice(0, half);
+  var right = [];
   for (let i = 0; i < array.length; i++) {
     array[i].style.backgroundColor = "#8ac4d0";
     if (i < half) {
@@ -370,18 +414,46 @@ async function mergeSort(array, delay = 150) {
     );
     array[i].style.backgroundColor = "#28527a";
   }
-
   return merge(mergeSort(left), mergeSort(right));
 }
 
 function merge(left, right) {
-  let arr = [];
+  var arr = [];
   // Break out of loop if any one of the array gets empty
-  let leftVal, rightVal;
+  var leftVal, rightVal;
   while (left.length > 0 && right.length > 0) {
     leftVal = Number(left[0].childNodes[0].innerHTML);
     rightVal = Number(right[0].childNodes[0].innerHTML);
     arr.push(leftVal < rightVal ? left.shift() : right.shift());
   }
   return arr.concat(left.length ? left : right);
+}
+
+function quickSortRun(delay, callback) {
+  var blocks = document.querySelectorAll(".block");
+  mergeSort(blocks, delay);
+}
+
+async function quickSort(array, delay) {
+  if (array.length <= 1) {
+    return array;
+  } else {
+    var leftArr = [];
+    var rightArr = [];
+    var newArr = [];
+    //pivot on last element in list and split list by that value
+    var pivot = array.pop();
+    let pivotVal = Number(pivot.childNodes[0].innerHTML);
+    var length = array.length;
+    for (var i = 0; i < length; i++) {
+      arrayVal = Number(array[i].childNodes[0].innerHTML);
+      //LTE pivot :left, GT pivot : right
+      if (arrayVal <= pivotVal) {
+        leftArr.push(array[i]);
+      } else {
+        rightArr.push(array[i]);
+      }
+    }
+    return newArr.concat(quickSort(leftArr), pivot, quickSort(rightArr));
+  }
 }

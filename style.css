@@ -1,7 +1,21 @@
+:root {
+  --mainColor: #005874; /* #206a5d;*/
+  --secondaryColor: #ffbe00; /*#81b214;*/
+  --accentColor: #1c819e; /* #bfdcae;*/
+  --bkgColor: #e6e6d4; /* #f1f1e8;*/
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+/*off white background and off-black base text*/
+body {
+  background-color: var(--bkgColor);
+  color: #444444;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .header {
@@ -10,7 +24,6 @@
 }
 
 #array {
-  background-color: white;
   height: 265px;
   width: 750px;
   margin: auto;
@@ -28,36 +41,42 @@
 
 .block2 {
   width: 28px;
-  background-color: darkgray;
+  /*background-color: darkgray;*/
   position: absolute;
   transition: 0.2s all ease;
+  background-color: var(--bkgColor);
+  color: #444444;
 }
 
 /* label for columns */
 .block_id {
   position: absolute;
-  color: black;
   margin-top: -20px;
   width: 100%;
   text-align: center;
+  background-color: var(--bkgColor);
+  color: #444444;
 }
 /* Count indices */
 .block_id2 {
   position: absolute;
-  color: black;
   margin-top: 22px;
   padding-top: 5px;
   width: 100%;
   text-align: center;
+  background-color: var(--bkgColor);
+  color: #444444;
 }
 /* frequency counts */
 .block_id3 {
   position: absolute;
-  color: black;
   margin-top: 1px;
 
   width: 100%;
   text-align: center;
+
+  background-color: var(--bkgColor);
+  color: #444444;
 }
 
 #count {
