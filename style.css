@@ -18,8 +18,19 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+nav {
+  display: inline-block;
+  position: absolute;
+  top: 90px;
+  left: 25px;
+  width: 200px;
+}
+
+ul {
+  list-style-type: none;
+}
+
 .header {
-  font-size: 20px;
   text-align: center;
 }
 
@@ -29,11 +40,20 @@ body {
   margin: auto;
   position: relative;
   margin-top: 64px;
+  display: block;
+}
+
+#count {
+  height: 100px;
+  width: 750px;
+  margin: auto;
 }
 
 .block {
   width: 28px;
   background-color: #28527a;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   position: absolute;
   bottom: 0px;
   transition: 0.2s all ease;
@@ -79,12 +99,6 @@ body {
   color: #444444;
 }
 
-#count {
-  height: 100px;
-  width: 750px;
-  margin: auto;
-}
-
 .sortStatus {
   font-size: 20px;
   text-align: center;
@@ -92,4 +106,25 @@ body {
 
 .titleBlock {
   text-align: center;
+  margin-top: 50px;
+}
+
+.button {
+  background-color: var(--accentColor); /* Green */
+  border: none;
+  color: var(--bkgColor);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 10px;
+  opacity: 1;
+  transition: 0.2s ease-in opacity;
+}
+
+.button:disabled {
+  opacity: 0;
+  transition: 0.2s ease-out opacity;
 }

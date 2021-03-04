@@ -2,66 +2,94 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
-    <br />
     <div class="titleBlock">
-      <p class="header">Press Generate to Start!</p>
-      <button id="generate" class="prep button" onclick="runGenerateArray()">
-        Generate List
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(insertionSort, 'Insertion Sort')"
-        disabled
-      >
-        Insertion Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(selectionSort, 'Selection Sort')"
-        disabled
-      >
-        Selection Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(bubbleSort, 'Bubble Sort')"
-        disabled
-      >
-        Bubble Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(shakerSort, 'Shaker Sort')"
-        disabled
-      >
-        Shaker Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(heapSort, 'Heap Sort')"
-        disabled
-      >
-        Heap Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(shellSort, 'Shell Sort')"
-        disabled
-      >
-        Shell Sort
-      </button>
-      <button
-        class="sort button"
-        onclick="runSort(bogoSort, 'Bogo Sort')"
-        disabled
-      >
-        Bogo Sort
-      </button>
-      <!--
+      <h1 class="header">Press Generate to Start!</h1>
+    </div>
+    <div class="buttonBlock">
+      <nav>
+        <ul>
+          <li>
+            <button onclick="window.location.reload()" class="setup button">
+              Reset
+            </button>
+          </li>
+          <li>
+            <button
+              id="generate"
+              class="setup button"
+              onclick="runGenerateArray()"
+            >
+              Generate List
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(insertionSort, 'Insertion Sort')"
+              disabled
+            >
+              Insertion Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(selectionSort, 'Selection Sort')"
+              disabled
+            >
+              Selection Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(bubbleSort, 'Bubble Sort')"
+              disabled
+            >
+              Bubble Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(shakerSort, 'Shaker Sort')"
+              disabled
+            >
+              Shaker Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(heapSort, 'Heap Sort')"
+              disabled
+            >
+              Heap Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(shellSort, 'Shell Sort')"
+              disabled
+            >
+              Shell Sort
+            </button>
+          </li>
+          <li>
+            <button
+              class="sort button"
+              onclick="runSort(bogoSort, 'Bogo Sort')"
+              disabled
+            >
+              Bogo Sort
+            </button>
+          </li>
+          <!--
       <button
         class="sort button"
         onclick="runSort(mergeSortRun, 'Merge Sort')"
@@ -77,16 +105,22 @@
         Quick Sort
       </button>
       -->
+        </ul>
+      </nav>
+      <div id="array"></div>
+      <div id="count"></div>
+
+      <p class="sortStatus"></p>
     </div>
-
-    <div id="array"></div>
-    <br />
-
-    <div id="count"></div>
-
-    <p class="sortStatus"></p>
-
-    <script type="" src="sorts.js"></script>
-    <script type="" src="index.js"></script>
   </body>
+  <footer>
+    <script type="" src="insertionSort.js"></script>
+    <script type="" src="selectionSort.js"></script>
+    <script type="" src="bubbleSort.js"></script>
+    <script type="" src="shakerSort.js"></script>
+    <script type="" src="heapSort.js"></script>
+    <script type="" src="shellSort.js"></script>
+    <script type="" src="bogoSort.js"></script>
+    <script type="" src="index.js"></script>
+  </footer>
 </html>
