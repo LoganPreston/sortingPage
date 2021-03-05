@@ -1,9 +1,20 @@
-function mergeSortRun(delay, callback) {
+async function mergeSortRun(delay, callback) {
   var blocks = document.querySelectorAll(".block");
-  mergeSort(blocks, delay);
+  var block_label = document.getElementsByClassName("block_id");
+  var valAry = [];
+  var steps = [];
+  for (let i = 0; i < blocks.length; i++) {
+    valAry.push(Number(blocks[i].childNodes[0].innerHTML));
+  }
+  valAry = await mergeSort(valAry, steps);
+  for (let i = 0; i < blocks.length; i++) {
+    blocks[i].style.height = `${valAry[i] * 5}px`;
+    block_label[i].innerText = valAry[i];
+  }
+  callback();
 }
 
-async function mergeSort(array, delay) {
+function mergeSort(array, steps) {
   const half = array.length / 2;
 
   // Base case or terminating case
@@ -14,20 +25,11 @@ async function mergeSort(array, delay) {
   var left = []; //array.splice(0, half);
   var right = [];
   for (let i = 0; i < array.length; i++) {
-    array[i].style.backgroundColor = "#8ac4d0";
     if (i < half) {
       left.push(array[i]);
     } else {
       right.push(array[i]);
     }
-    // To wait for .1 sec
-
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, delay)
-    );
-    array[i].style.backgroundColor = "#28527a";
   }
   return merge(mergeSort(left), mergeSort(right));
 }
@@ -35,11 +37,8 @@ async function mergeSort(array, delay) {
 function merge(left, right) {
   var arr = [];
   // Break out of loop if any one of the array gets empty
-  var leftVal, rightVal;
   while (left.length > 0 && right.length > 0) {
-    leftVal = Number(left[0].childNodes[0].innerHTML);
-    rightVal = Number(right[0].childNodes[0].innerHTML);
-    arr.push(leftVal < rightVal ? left.shift() : right.shift());
+    arr.push(left[0] < right[0] ? left.shift() : right.shift());
   }
   return arr.concat(left.length ? left : right);
 }

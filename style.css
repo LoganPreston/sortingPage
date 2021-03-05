@@ -41,12 +41,14 @@ ul {
   position: relative;
   margin-top: 64px;
   display: block;
+  align-items: center;
 }
 
 #count {
   height: 100px;
   width: 750px;
   margin: auto;
+  align-items: center;
 }
 
 .block {
@@ -63,7 +65,7 @@ ul {
   width: 28px;
   /*background-color: darkgray;*/
   position: absolute;
-  transition: 0.2s all ease;
+  transition: 0.1s all ease;
   background-color: var(--bkgColor);
   color: #444444;
 }

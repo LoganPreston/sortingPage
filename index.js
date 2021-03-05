@@ -3,10 +3,12 @@ function generatearray() {
   var container = document.getElementById("array");
 
   let numRange = 25;
+  let nums = Array.from(new Array(numRange), (x, i) => i + 1);
+  shuffle(nums);
   for (var i = 0; i < numRange; i++) {
     // Return a value from 1 to 100 (both inclusive)
 
-    var value = Math.ceil(Math.random() * numRange);
+    var value = nums[i]; //Math.ceil(Math.random() * numRange);
 
     // Creating element div
     var array_ele = document.createElement("div");
@@ -29,6 +31,17 @@ function generatearray() {
     // Appending created elements to index.html
     array_ele.appendChild(array_ele_label);
     container.appendChild(array_ele);
+  }
+}
+
+//Fisher-Yates random. Not truly Random
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    let tmp = array[i];
+    array[i] = array[j];
+    array[j] = tmp;
+    //[array[i], array[j]] = [array[j], array[i]];
   }
 }
 
