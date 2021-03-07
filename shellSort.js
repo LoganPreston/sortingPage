@@ -1,4 +1,4 @@
-async function shellSort(delay, callback) {
+async function shellSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
 
@@ -17,7 +17,7 @@ async function shellSort(delay, callback) {
       while (j >= increment && compareVal > tmpVal) {
         //swap down
         blocks[j].style.backgroundColor = "#8ac4d0";
-        blocks[j].style.height = `${compareVal * 5}px`;
+        blocks[j].style.height = `${compareVal * heightAdjust}px`;
         block_label[j].innerText = compareVal;
 
         await new Promise((resolve) =>
@@ -50,7 +50,7 @@ async function shellSort(delay, callback) {
 
       //update
       blocks[j].style.backgroundColor = "#8ac4d0";
-      blocks[j].style.height = `${tmpVal * 5}px`;
+      blocks[j].style.height = `${tmpVal * heightAdjust}px`;
       block_label[j].innerText = tmpVal;
       //reset colors
       blocks[i].style.backgroundColor = "#28527a";

@@ -2,9 +2,16 @@
 function generatearray() {
   var container = document.getElementById("array");
 
-  let numRange = 25;
+  const slider = document.getElementById("blockCount");
+  const numRange = parseInt(slider.value);
   let nums = Array.from(new Array(numRange), (x, i) => i + 1);
   shuffle(nums);
+
+  //div size constants
+  const heightAdjust = numRange < 50 ? 5 : 2.5;
+  const widthAdjust = 750 / numRange - 2; //(-14 / 25) * numRange + 42; //25 col looks good with 28 width
+  const transformAdjust = 750 / numRange; //(-15 / 25) * numRange + 45; //25 col looks good with transform 30
+
   for (var i = 0; i < numRange; i++) {
     // Return a value from 1 to 100 (both inclusive)
 
@@ -17,16 +24,20 @@ function generatearray() {
     array_ele.classList.add("block");
 
     // Adding style to div
-    let heightAdjust = 5;
-    let transformAdjust = 30;
+
+    array_ele.style.width = `${widthAdjust}px`;
     array_ele.style.height = `${value * heightAdjust}px`;
     array_ele.style.transform = `translate(${i * transformAdjust}px)`;
 
     // Creating label element for displaying
     // size of particular block
+
     var array_ele_label = document.createElement("label");
     array_ele_label.classList.add("block_id");
     array_ele_label.innerText = value;
+    if (numRange > 30) {
+      array_ele_label.style.opacity = 0;
+    }
 
     // Appending created elements to index.html
     array_ele.appendChild(array_ele_label);
@@ -49,7 +60,8 @@ function shuffle(array) {
 
 function generate_freq() {
   var count_container = document.getElementById("count");
-  let numRange = 25;
+  let slider = document.getElementById("blockCount");
+  let numRange = slider.value; //25;
   let transformAdjust = 30;
   for (let i = 0; i < numRange; i++) {
     // Creating element div
@@ -109,9 +121,6 @@ function runGenerateArray() {
   //display sort status
   let status = document.querySelector(".sortStatus");
   status.innerText = "Ready to Sort!";
-
-  // Calling generate_freq function
-  //generate_freq();
 }
 
 //when user clicks any sort button, fall into here. Disables/Enables buttons, runs sort.
@@ -131,12 +140,22 @@ function runSort(sort, name) {
   const genButton = document.getElementById("generate");
   genButton.disabled = true;
 
+  const sliders = document.getElementsByClassName("slider");
+  for (let i = 0; i < sliders.length; i++) {
+    sliders[i].disabled = true;
+  }
+
   //start timer - get millisec since unix epoch
   let startTime = new Date().getTime();
 
+  //get height adjustment FROM GEN ARRAY NOT WHERE SLIDER IS
+  const blocks = document.querySelectorAll(".block");
+  let heightAdjust = blocks.length < 50 ? 5 : 2.5;
+
   // Calling sort function, reactivate generate button when done
-  let delay = 200;
-  sort(delay, () => {
+  const delaySlider = document.getElementById("delayTime");
+  let delay = parseInt(delaySlider.value);
+  sort(heightAdjust, delay, () => {
     let status = document.querySelector(".sortStatus");
     let endTime = new Date().getTime();
     status.innerText =
@@ -144,5 +163,15 @@ function runSort(sort, name) {
       Math.round((endTime - startTime) / 1000) +
       " seconds!";
     document.getElementById("generate").disabled = false;
+    const sliders = document.getElementsByClassName("slider");
+    for (let i = 0; i < sliders.length; i++) {
+      sliders[i].disabled = false;
+    }
   });
+}
+
+function updateSliderVal(sliderId, labelId) {
+  let slider = document.getElementById(sliderId);
+  let label = document.getElementById(labelId);
+  label.innerHTML = slider.value;
 }

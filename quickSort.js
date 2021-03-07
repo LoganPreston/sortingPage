@@ -1,14 +1,16 @@
-async function quickSortRun(delay, callback) {
+async function quickSortRun(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
+  //put into array and recursively quicksort. Track steps in steps array
   var valAry = [];
   var steps = [];
   for (let i = 0; i < blocks.length; i++) {
     valAry.push(Number(blocks[i].childNodes[0].innerHTML));
   }
   valAry = await quickSort(valAry, steps);
+  //animate steps
   for (let i = 0; i < blocks.length; i++) {
-    blocks[i].style.height = `${valAry[i] * 5}px`;
+    blocks[i].style.height = `${valAry[i] * heightAdjust}px`;
     block_label[i].innerText = valAry[i];
   }
   callback();

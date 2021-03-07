@@ -1,4 +1,4 @@
-async function selectionSort(delay, callback) {
+async function selectionSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
 
@@ -34,10 +34,10 @@ async function selectionSort(delay, callback) {
     if (min != i) {
       let tmp = Number(blocks[i].childNodes[0].innerHTML);
 
-      blocks[i].style.height = `${minVal * 5}px`;
+      blocks[i].style.height = `${minVal * heightAdjust}px`;
       block_label[i].innerText = minVal;
 
-      blocks[min].style.height = `${tmp * 5}px`;
+      blocks[min].style.height = `${tmp * heightAdjust}px`;
       block_label[min].innerText = tmp;
     }
     //uncolor for next comparison

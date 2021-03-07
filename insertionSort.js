@@ -1,4 +1,4 @@
-async function insertionSort(delay, callback) {
+async function insertionSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
 
@@ -12,7 +12,7 @@ async function insertionSort(delay, callback) {
     while (j > -1 && curVal < compareVal) {
       blocks[j].style.backgroundColor = "#8ac4d0";
 
-      blocks[j + 1].style.height = `${compareVal * 5}px`;
+      blocks[j + 1].style.height = `${compareVal * heightAdjust}px`;
       block_label[j + 1].innerText = compareVal;
       await new Promise((resolve) =>
         setTimeout(() => {

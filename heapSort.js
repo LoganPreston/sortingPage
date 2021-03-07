@@ -1,4 +1,4 @@
-async function heapSort(delay, callback) {
+async function heapSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
   var heap = [];
@@ -18,7 +18,7 @@ async function heapSort(delay, callback) {
     blocks[i].style.backgroundColor = "#8ac4d0";
     let topOfHeap = removeFromHeap(heap);
 
-    blocks[i].style.height = `${topOfHeap * 5}px`;
+    blocks[i].style.height = `${topOfHeap * heightAdjust}px`;
     block_label[i].innerText = topOfHeap;
     await new Promise((resolve) =>
       setTimeout(() => {

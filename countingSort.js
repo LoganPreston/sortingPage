@@ -1,5 +1,5 @@
 // Asynchronous CountingSort function
-async function countingSort(delay, callback) {
+async function countingSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
 
   // To store frequency of every block
@@ -54,7 +54,7 @@ async function countingSort(delay, callback) {
 
     //sorting the block array
     for (var j = 0; j < temp; j++) {
-      blocks[idx].style.height = `${(i + 1) * 13}px`;
+      blocks[idx].style.height = `${(i + 1) * heightAdjust}px`;
       block_label[idx].innerText = i + 1;
       idx++;
     }

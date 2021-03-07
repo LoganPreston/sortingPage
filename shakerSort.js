@@ -1,5 +1,5 @@
 //shaker/cocktail sort, bubble sort that goes up and down
-async function shakerSort(delay, callback) {
+async function shakerSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
 
   // To store frequency of every block
@@ -18,9 +18,9 @@ async function shakerSort(delay, callback) {
       let rightVal = Number(blocks[i + 1].childNodes[0].innerHTML);
       if (leftVal > rightVal) {
         tmp = rightVal;
-        blocks[i + 1].style.height = `${leftVal * 5}px`;
+        blocks[i + 1].style.height = `${leftVal * heightAdjust}px`;
         block_label[i + 1].innerText = leftVal;
-        blocks[i].style.height = `${tmp * 5}px`;
+        blocks[i].style.height = `${tmp * heightAdjust}px`;
         block_label[i].innerText = tmp;
       }
 
@@ -46,7 +46,7 @@ async function shakerSort(delay, callback) {
       var rightVal = Number(blocks[i - 1].childNodes[0].innerHTML);
       if (leftVal < rightVal) {
         tmp = rightVal;
-        blocks[i - 1].style.height = `${leftVal * 5}px`;
+        blocks[i - 1].style.height = `${leftVal * heightAdjust}px`;
         block_label[i - 1].innerText = leftVal;
         blocks[i].style.height = `${tmp * 5}px`;
         block_label[i].innerText = tmp;

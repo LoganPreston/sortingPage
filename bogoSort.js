@@ -1,4 +1,4 @@
-async function bogoSort(delay, callback) {
+async function bogoSort(heightAdjust, delay, callback) {
   var blocks = document.querySelectorAll(".block");
   var block_label = document.getElementsByClassName("block_id");
   let ary = new Array(blocks.length);
@@ -8,7 +8,7 @@ async function bogoSort(delay, callback) {
   while (true) {
     shuffle(ary);
     for (let i = 0; i < blocks.length; i++) {
-      blocks[i].style.height = `${ary[i] * 5}px`;
+      blocks[i].style.height = `${ary[i] * heightAdjust}px`;
       block_label[i].innerText = ary[i];
     }
     await new Promise((resolve) =>
