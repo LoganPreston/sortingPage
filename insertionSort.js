@@ -30,7 +30,7 @@ async function insertionSort(heightAdjust, delay, callback) {
         resolve();
       }, delay)
     );
-    blocks[j + 1].style.height = `${curVal * 5}px`;
+    blocks[j + 1].style.height = `${curVal * heightAdjust}px`;
     block_label[j + 1].innerText = curVal;
   }
   blocks[blocks.length - 1].style.backgroundColor = "#28527a";
