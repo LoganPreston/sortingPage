@@ -48,7 +48,7 @@ async function shakerSort(heightAdjust, delay, callback) {
         tmp = rightVal;
         blocks[i - 1].style.height = `${leftVal * heightAdjust}px`;
         block_label[i - 1].innerText = leftVal;
-        blocks[i].style.height = `${tmp * 5}px`;
+        blocks[i].style.height = `${tmp * heightAdjust}px`;
         block_label[i].innerText = tmp;
       }
 
